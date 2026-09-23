@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Sathish P | Digital Marketing & Data Analyst</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Fira Code for code/data accents -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #050811;
+            --bg-card: rgba(18, 27, 48, 0.75);
+            --bg-card-hover: rgba(26, 38, 66, 0.9);
+            --accent: #00f2fe;
+            --accent-secondary: #4facfe;
+            --accent-glow: rgba(0, 242, 254, 0.35);
+            --accent-hover: #3bc9f3;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: rgba(0, 242, 254, 0.15);
+            --border-glow: rgba(0, 242, 254, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+            touch-action: pan-y;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 72px;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Animated Background Ambient Glow Orbs */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: floatOrb 12s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: #00f2fe;
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: #4facfe;
+            bottom: 10%;
+            right: -150px;
+            animation-delay: -4s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: #0ea5e9;
+            top: 50%;
+            left: 30%;
+            animation-delay: -8s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 60px) scale(1.1); }
+        }
+
+        /* Scroll Animation Classes */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar & Mobile Drawer */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            background: rgba(5, 8, 17, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 16px var(--accent-glow);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            flex-shrink: 0;
+        }
+
+        .brand-logo:hover .logo-icon {
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        .logo-text {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            font-weight: 400;
+            font-size: 0.82rem;
+            margin-left: 4px;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.35rem;
+            cursor: pointer;
+            padding: 0.4rem;
+            z-index: 1001;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 1.6rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.25s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-nav-resume {
+            padding: 0.45rem 0.9rem;
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            color: var(--accent) !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(0, 242, 254, 0.05);
+            transition: all 0.3s ease !important;
+        }
+
+        .btn-nav-resume::after {
+            display: none !important;
+        }
+
+        .btn-nav-resume:hover {
+            background: var(--accent) !important;
+            color: var(--bg-dark) !important;
+            box-shadow: 0 0 16px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section with Digital Marketing Analytics Theme Background */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 3rem 8%;
+            position: relative;
+            background: 
+                linear-gradient(90deg, rgba(5, 8, 17, 0.96) 45%, rgba(5, 8, 17, 0.75) 100%),
+                url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80') right center/cover no-repeat;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-content {
+            max-width: 760px;
+            width: 100%;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 242, 254, 0.08);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.12);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 1.2rem;
+            word-break: break-word;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(120deg, var(--accent) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing-container {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            height: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2rem;
+            background-color: var(--accent);
+            margin-left: 4px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.4rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            min-height: 46px;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            color: var(--bg-dark);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .primary-btn:hover {
+            opacity: 0.92;
+            color: var(--bg-dark);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 25px rgba(0, 242, 254, 0.5);
+        }
+
+        .resume-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glow);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        .resume-btn:hover {
+            background: rgba(0, 242, 254, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .secondary-btn {
+            border: 1px solid var(--border-color);
+            background: rgba(18, 27, 48, 0.5);
+            color: var(--text-muted);
+        }
+
+        .secondary-btn:hover {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.35rem;
+            margin-right: 1.25rem;
+            padding: 0.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px) scale(1.15);
+        }
+
+        /* Sections Structure */
+        .section {
+            padding: 5rem 8%;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 4vw, 2.1rem);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            border-radius: 4px;
+        }
+
+        /* About & Stats */
+        .about-text {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            color: var(--text-muted);
+            max-width: 820px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            padding: 1.6rem 1rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 30px -10px rgba(0, 242, 254, 0.2);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card h3 {
+            font-size: clamp(1.8rem, 4.5vw, 2.3rem);
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.4rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            padding: 1.8rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 14px 35px -10px rgba(0, 242, 254, 0.25);
+            background: var(--bg-card-hover);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .card-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.15rem;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 12px rgba(0, 242, 254, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover .card-icon-wrapper {
+            background: var(--accent);
+            color: var(--bg-dark);
+            box-shadow: 0 0 18px var(--accent-glow);
+            transform: rotate(-6deg);
+        }
+
+        .skill-category h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .skill-category p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Projects Section with Image Previews */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+            box-shadow: 0 18px 40px -12px rgba(0, 242, 254, 0.28);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+            background: #020617;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover .project-image-container img {
+            transform: scale(1.08);
+        }
+
+        .project-body {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .project-tag {
+            font-size: 0.72rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-title-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .project-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .project-tech span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .project-card:hover .project-tech span {
+            border-color: rgba(0, 242, 254, 0.3);
+            color: var(--text-main);
+        }
+
+        .project-footer-links {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: transform 0.2s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(3px);
+            text-decoration: underline;
+        }
+
+        /* Timeline Experience */
+        .timeline {
+            border-left: 2px solid var(--border-color);
+            padding-left: 1.8rem;
+            margin-left: 1.2rem;
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.2rem;
+        }
+
+        .experience-icon-badge {
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 0.95rem;
+            box-shadow: 0 0 14px var(--accent-glow);
+            transition: all 0.35s ease;
+        }
+
+        .timeline-item:hover .experience-icon-badge {
+            background: var(--accent);
+            color: var(--bg-dark);
+            transform: scale(1.12);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            padding: 1.8rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            transition: all 0.35s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 242, 254, 0.2);
+        }
+
+        .timeline-date {
+            font-size: 0.82rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .company {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .timeline-content li {
+            margin-bottom: 0.6rem;
+            position: relative;
+            padding-left: 1.3rem;
+            line-height: 1.6;
+        }
+
+        .timeline-content li::before {
+            content: '▹';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Education & Certs */
+        .edu-grid, .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-card, .cert-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            padding: 1.8rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .edu-card:hover, .cert-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 14px 35px -10px rgba(0, 242, 254, 0.22);
+            background: var(--bg-card-hover);
+        }
+
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-icon-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .edu-card h3, .cert-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .edu-card .institution, .cert-card .issuer {
+            color: var(--accent);
+            font-size: 0.88rem;
+            margin-bottom: 0.9rem;
+            font-weight: 500;
+            padding-left: 2.9rem;
+        }
+
+        .edu-card ul, .cert-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .edu-card li, .cert-card li {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 0.55rem;
+            position: relative;
+            padding-left: 1.2rem;
+            line-height: 1.55;
+        }
+
+        .edu-card li::before, .cert-card li::before {
+            content: '▹';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(18, 27, 48, 0.9), rgba(5, 8, 17, 0.95));
+            border: 1px solid var(--border-glow);
+            padding: 3rem 1.8rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .contact-card h2 {
+            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 1.8rem auto;
+            font-size: 0.95rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 1.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.2rem;
+        }
+
+        .contact-details p {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 0.92rem;
+            word-break: break-all;
+        }
+
+        .contact-details i {
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.2rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Mobile Responsive Tweaks */
+        @media (max-width: 820px) {
+            .navbar {
+                padding: 0.9rem 5%;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 78%;
+                max-width: 320px;
+                height: 100vh;
+                background: rgba(5, 8, 17, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 5.5rem 2rem 2rem 2rem;
+                gap: 1.4rem;
+                border-left: 1px solid var(--border-color);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.05rem;
+                width: 100%;
+                display: block;
+            }
+
+            .btn-nav-resume {
+                width: 100%;
+                justify-content: center;
+                margin-top: 0.5rem;
+            }
+
+            .hero {
+                padding: 3.5rem 5%;
+                min-height: auto;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+            }
+
+            .section {
+                padding: 3.5rem 5%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.85rem;
+            }
+
+            .stat-card {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .projects-grid, .skills-grid, .edu-grid, .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                margin-left: 0.8rem;
+                padding-left: 1.4rem;
+            }
+
+            .experience-icon-badge {
+                left: -2.35rem;
+                width: 32px;
+                height: 32px;
+                font-size: 0.85rem;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 0.9rem;
+            }
+
+            .contact-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .contact-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Animated Background Orbs -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="https://sathish29001.github.io/Sathish-PortFolio/" class="brand-logo">
+            <div class="logo-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#050811" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                    <circle cx="18" cy="10" r="2" fill="#050811"></circle>
+                    <circle cx="12" cy="4" r="2" fill="#050811"></circle>
+                    <circle cx="6" cy="14" r="2" fill="#050811"></circle>
+                </svg>
+            </div>
+            <div class="logo-text">Sathish P<span>| Digital Marketing & Data Analyst</span></div>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars" id="navIcon"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" class="nav-item">About</a></li>
+            <li><a href="#skills" class="nav-item">Skills</a></li>
+            <li><a href="#projects" class="nav-item">Projects</a></li>
+            <li><a href="#experience" class="nav-item">Experience</a></li>
+            <li><a href="#education" class="nav-item">Education</a></li>
+            <li><a href="#certifications" class="nav-item">Certifications</a></li>
+            <li><a href="#contact" class="btn-nav-resume nav-item" style="border-color: var(--border-color); color: var(--text-main) !important;">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge"><i class="fa-solid fa-shield-halved"></i> Certified Digital Marketing & Data Analyst</span>
+            <h1>Turning Campaign Traffic Into <span>Revenue-Driving Intelligence</span></h1>
+            
+            <!-- Live Typing Subheader Effect -->
+            <div class="typing-container">
+                <span id="typingText"></span><span class="cursor"></span>
+            </div>
+
+            <p>Specializing in GA4, Google & Meta Ads, SQL, Python, and Power BI to optimize marketing campaigns, track conversion funnels, and scale e-commerce growth.</p>
+            
+            <div class="hero-btns">
+                <a href="#projects" class="btn resume-btn">
+                    <i class="fa-solid fa-laptop-code"></i> View Projects
+                </a>
+                <a href="#contact" class="btn secondary-btn">
+                    <i class="fa-solid fa-envelope"></i> Contact Me
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/sathish-p-5a5670237/" target="_blank" title="LinkedIn" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/Sathish29001" target="_blank" title="GitHub" rel="noopener"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:sathishp29001@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title reveal-up">About Me</h2>
+        <p class="about-text reveal-up">
+            Results-driven Certified Digital Marketing and Data Analyst with 1.6+ years of operational analytics experience. Proficient in managing paid acquisition channels, relational schema design, exploratory data analysis (EDA), predictive cohort segmentation, and executive BI reporting with a commitment to maintaining 99% data integrity.
+        </p>
+        <div class="stats-grid">
+            <div class="stat-card reveal-up">
+                <h3>12%</h3>
+                <p>Conversion Lift (CRO)</p>
+            </div>
+            <div class="stat-card reveal-up">
+                <h3>40%</h3>
+                <p>Reporting Reduction</p>
+            </div>
+            <div class="stat-card reveal-up">
+                <h3>99%</h3>
+                <p>Data Accuracy Maintained</p>
+            </div>
+            <div class="stat-card reveal-up">
+                <h3>30%</h3>
+                <p>Time Saved</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title reveal-up">Technical Expertise</h2>
+        <div class="skills-grid">
+            
+            <div class="skill-category reveal-up">
+                <div class="skill-header">
+                    <div class="card-icon-wrapper">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3>Digital Marketing & Ads</h3>
+                </div>
+                <p>Google Ads, Meta Ads, Google Analytics 4 (GA4), SEO/SEM Optimization, Email Marketing, Funnel Optimization</p>
+            </div>
+
+            <div class="skill-category reveal-up">
+                <div class="skill-header">
+                    <div class="card-icon-wrapper">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <h3>Querying & Languages</h3>
+                </div>
+                <p>SQL (MySQL Workbench, PostgreSQL, BigQuery, SQLite), Python (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn), DAX</p>
+            </div>
+
+            <div class="skill-category reveal-up">
+                <div class="skill-header">
+                    <div class="card-icon-wrapper">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Business Intelligence</h3>
+                </div>
+                <p>Power BI, Power BI Service, Tableau Desktop, Advanced Excel (Power Query, Power Pivot), GA4 Tracking</p>
+            </div>
+
+            <div class="skill-category reveal-up">
+                <div class="skill-header">
+                    <div class="card-icon-wrapper">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3>Data Architecture</h3>
+                </div>
+                <p>Star Schema, 3NF Relational Modeling, Automated ETL Pipelines, Feature Engineering, Multi-Source Blending</p>
+            </div>
+
+            <div class="skill-category reveal-up">
+                <div class="skill-header">
+                    <div class="card-icon-wrapper">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h3>Methodologies</h3>
+                </div>
+                <p>Exploratory Data Analysis (EDA), Customer Churn & Cohort Analysis, Root Cause Analysis (RCA), ROAS Attribution</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section with Image Previews -->
+    <section id="projects" class="section">
+        <h2 class="section-title reveal-up">Featured Projects</h2>
+        <div class="projects-grid">
+
+            <!-- Project 1 -->
+            <div class="project-card reveal-up">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Churn Analytics Preview">
+                </div>
+                <div class="project-body">
+                    <div>
+                        <span class="project-tag">Python & SQLite</span>
+                        <div class="project-title-row">
+                            <div class="project-title-icon">
+                                <i class="fa-solid fa-user-xmark"></i>
+                            </div>
+                            <div class="project-header">
+                                <h3>End-To-End Churn Analytics & Customer Intelligence</h3>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            Built an automated pipeline extracting multi-table datasets into SQLite, performing data cleaning, feature engineering, and customer profiling. Identified a 0.77 escalation correlation and calculated a 28.57% churn rate.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>SQLite</span>
+                            <span>Seaborn</span>
+                            <span>EDA</span>
+                        </div>
+                        <div class="project-footer-links">
+                            <a href="https://github.com/Sathish29001/Data-Anlaysis-Churn-Analysis-Project" class="project-link" target="_blank" rel="noopener">
+                                <i class="fa-brands fa-github"></i> View Code <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card reveal-up">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Airbnb Market Analytics Preview">
+                </div>
+                <div class="project-body">
+                    <div>
+                        <span class="project-tag">Power BI & Market BI</span>
+                        <div class="project-title-row">
+                            <div class="project-title-icon">
+                                <i class="fa-solid fa-city"></i>
+                            </div>
+                            <div class="project-header">
+                                <h3>Global Airbnb Performance & Market Analytics</h3>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            Constructed an enterprise Power BI model analyzing 279K+ listings and 5.3M+ reviews across 10 global cities. Evaluated hotel-versus-rental pricing variance and host verification trust signals (66.9% verified).
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tech">
+                            <span>Power BI</span>
+                            <span>DAX</span>
+                            <span>Power Query</span>
+                            <span>Market Intelligence</span>
+                        </div>
+                        <div class="project-footer-links">
+                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7500438415004450816/" class="project-link" target="_blank" rel="noopener">
+                                <i class="fa-brands fa-linkedin"></i> View Dashboard <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card reveal-up">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="General Store Transaction Analytics Preview">
+                </div>
+                <div class="project-body">
+                    <div>
+                        <span class="project-tag">MySQL & Relational</span>
+                        <div class="project-title-row">
+                            <div class="project-title-icon">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <div class="project-header">
+                                <h3>General Store Transaction Analytics</h3>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            Engineered a 3NF relational database schema auditing $2.29M in retail transactions. Deployed complex CTEs, Window Functions (DENSE_RANK, LEAD/LAG), and multi-table JOINS to evaluate high-margin SKU velocities.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tech">
+                            <span>MySQL</span>
+                            <span>3NF Schema</span>
+                            <span>CTEs</span>
+                            <span>Window Functions</span>
+                        </div>
+                        <div class="project-footer-links">
+                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7466884086746488832/" class="project-link" target="_blank" rel="noopener">
+                                <i class="fa-brands fa-linkedin"></i> View Project on LinkedIn <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card reveal-up">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Fitness Operations Dashboard Preview">
+                </div>
+                <div class="project-body">
+                    <div>
+                        <span class="project-tag">Power BI & DAX</span>
+                        <div class="project-title-row">
+                            <div class="project-title-icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <div class="project-header">
+                                <h3>Financial & Fitness Operations Dashboard</h3>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            Consolidated metrics for a $4M revenue portfolio across 100+ clients and 20 personal trainers. Implemented custom DAX measures and star-schema models to support dynamic revenue tracking.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tech">
+                            <span>Power BI</span>
+                            <span>DAX</span>
+                            <span>Star Schema</span>
+                            <span>Data Modeling</span>
+                        </div>
+                        <div class="project-footer-links">
+                            <a href="https://www.linkedin.com/posts/sathish-p-5a5670237_fitness-dashboard-analysis-power-bi-ugcPost-7465742488301981696-dKK0/" class="project-link" target="_blank" rel="noopener">
+                                <i class="fa-brands fa-linkedin"></i> View Dashboard <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card reveal-up">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Wellness Study Preview">
+                </div>
+                <div class="project-body">
+                    <div>
+                        <span class="project-tag">Python & Wearables</span>
+                        <div class="project-title-row">
+                            <div class="project-title-icon">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <div class="project-header">
+                                <h3>Wellness Behavioral Cohort Analysis</h3>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            Analyzed high-volume smart wearable datasets with Pandas and NumPy. Cleaned daily biometrics, engineered user activity cohorts, and surfaced actionable behavioral clusters for health recommendations.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Kaggle</span>
+                            <span>Matplotlib</span>
+                        </div>
+                        <div class="project-footer-links">
+                            <a href="https://www.kaggle.com/code/sathishp2901/case-study-how-can-a-wellness-company-play-it-safe" class="project-link" target="_blank" rel="noopener">
+                                <i class="fa-brands fa-kaggle"></i> View Kaggle Study <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card reveal-up">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" alt="Automotive Sales Dashboard Preview">
+                </div>
+                <div class="project-body">
+                    <div>
+                        <span class="project-tag">Power BI & Financial Modeling</span>
+                        <div class="project-title-row">
+                            <div class="project-title-icon">
+                                <i class="fa-solid fa-car"></i>
+                            </div>
+                            <div class="project-header">
+                                <h3>Automotive Sales Performance Dashboard</h3>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            Engineered a global dashboard tracking €3.20B in revenue and €768M in operating income across 940 distinct units, highlighting model-specific profitability and regional sales performance.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tech">
+                            <span>Power BI</span>
+                            <span>DAX</span>
+                            <span>Excel Analytics</span>
+                        </div>
+                        <div class="project-footer-links">
+                            <a href="https://www.linkedin.com/posts/sathish-p-5a5670237_lamborghini-sales-performance-2025-objective-share-7465741615693885440-VelP/" class="project-link" target="_blank" rel="noopener">
+                                <i class="fa-brands fa-linkedin"></i> View Dashboard <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title reveal-up">Work Experience</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item reveal-up">
+                <div class="experience-icon-badge">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fa-regular fa-calendar"></i> July 2024 - January 2026 (1.6 Years)
+                    </div>
+                    <h3>Operations & Data Analyst</h3>
+                    <p class="company"><i class="fa-solid fa-building"></i> Vindhya E-Infomedia Pvt Ltd | Bangalore, Karnataka</p>
+                    <ul>
+                        <li>Engineered multi-step digital conversion and transaction funnels using Advanced Excel, SQL, and GA4 to analyze drop-off points, resulting in a 12% lift in Conversion Rate Optimization (CRO) across targeted user journeys.</li>
+                        <li>Automated weekly reporting workflows and KPI dashboards using SQL queries and dynamic Power Query pipelines, reducing manual reporting time by 6 hours per week.</li>
+                        <li>Enforced strict automated data validation and data hygiene protocols across 10,000+ digital financial records, maintaining 99% data accuracy for strategic business metric tracking.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal-up">
+                <div class="experience-icon-badge">
+                    <i class="fa-solid fa-bullhorn"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fa-regular fa-calendar"></i> May 2024 - June 2024
+                    </div>
+                    <h3>Digital Marketing Intern</h3>
+                    <p class="company"><i class="fa-solid fa-building"></i> ArtyCraftz</p>
+                    <ul>
+                        <li>Managed end-to-end digital marketing and e-commerce campaigns across SEO, PPC, and social media platforms, leveraging Google Analytics (GA4) and Meta Ads Manager to track engagement metrics and optimize user acquisition funnels.</li>
+                        <li>Conducted keyword research, search engine optimization (SEO), and on-page optimization using Google Keyword Planner to boost search rankings and drive targeted organic traffic.</li>
+                        <li>Drafted high-converting ad copy, designed creative social media assets in Canva, and executed structured A/B testing frameworks to improve Click-Through Rates (CTR) and overall e-commerce conversion rates.</li>
+                        <li>Aggregated weekly digital marketing performance metrics into centralized Excel and Power BI dashboards to pinpoint user funnel drop-offs and support data-driven optimization strategies.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2 class="section-title reveal-up">Education</h2>
+        <div class="edu-grid">
+            
+            <div class="edu-card reveal-up">
+                <div class="card-title-group">
+                    <div class="card-icon-badge">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3>Bachelor of Commerce (B.Com)</h3>
+                </div>
+                <div class="institution">SRN Adarsh College | Business & Financial Analysis</div>
+                <ul>
+                    <li>Focused on corporate accounting, business valuation, and quantitative economic analysis.</li>
+                    <li>Developed foundational competencies in financial reconciliation and auditing principles.</li>
+                </ul>
+            </div>
+
+            <div class="edu-card reveal-up">
+                <div class="card-title-group">
+                    <div class="card-icon-badge">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3>Computer Science & Business Applications</h3>
+                </div>
+                <div class="institution">SRN Adarsh College | CSBA</div>
+                <ul>
+                    <li>Core coursework in algorithmic thinking, data structures, and database structures.</li>
+                    <li>Bridged technical software implementation with enterprise operational requirements.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <h2 class="section-title reveal-up">Certifications & Upskilling</h2>
+        <div class="cert-grid">
+
+            <div class="cert-card reveal-up">
+                <div>
+                    <div class="card-title-group">
+                        <div class="card-icon-badge">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+                        <h3>Google Data Analytics Professional Certificate</h3>
+                    </div>
+                    <div class="issuer">Coursera | Dec 2025 - Feb 2026</div>
+                    <ul>
+                        <li>Completed 8 courses covering spreadsheets, SQL, Tableau, and R for end-to-end data processing and analysis.</li>
+                    </ul>
+                </div>
+                <div class="cert-action-footer" style="margin-top: 1.2rem; border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; justify-content: flex-start;">
+                    <a href="https://coursera.org/verify/professional-cert/GMTLEIFRVCPJ" class="btn-cert-view" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.1rem; background: rgba(0, 242, 254, 0.08); border: 1px solid var(--border-glow); color: var(--accent); font-size: 0.85rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> Verify Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="cert-card reveal-up">
+                <div>
+                    <div class="card-title-group">
+                        <div class="card-icon-badge">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <h3>Google Data Analysis with Python</h3>
+                    </div>
+                    <div class="issuer">Coursera | Feb 2026 - Mar 2026</div>
+                    <ul>
+                        <li>Completed 6 courses developed by Google focusing on Python programming, NumPy, pandas, and Jupyter Notebooks.</li>
+                    </ul>
+                </div>
+                <div class="cert-action-footer" style="margin-top: 1.2rem; border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; justify-content: flex-start;">
+                    <a href="https://coursera.org/verify/specialization/G3LQ7VB44HHX" class="btn-cert-view" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.1rem; background: rgba(0, 242, 254, 0.08); border: 1px solid var(--border-glow); color: var(--accent); font-size: 0.85rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> Verify Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="cert-card reveal-up">
+                <div>
+                    <div class="card-title-group">
+                        <div class="card-icon-badge">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3>Data Analyst Professional Certification</h3>
+                    </div>
+                    <div class="issuer">Besant Technologies | Mar 2026 - Aug 2026</div>
+                    <ul>
+                        <li>Comprehensive mastery of relational database architecture, ETL pipelines, Power BI, and DAX.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cert-card reveal-up">
+                <div>
+                    <div class="card-title-group">
+                        <div class="card-icon-badge">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+                        <h3>Google Digital Marketing & E-commerce Professional Certificate</h3>
+                    </div>
+                    <div class="issuer">Coursera | Nov 2023 - Mar 2024</div>
+                    <ul>
+                        <li>Completed 7 courses developed by Google covering digital marketing foundations, SEO/SEM, email marketing, analytics measurement, and e-commerce store management[cite: 11].</li>
+                    </ul>
+                </div>
+                <div class="cert-action-footer" style="margin-top: 1.2rem; border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; justify-content: flex-start;">
+                    <a href="https://coursera.org/verify/professional-cert/FZK79564WZYE" class="btn-cert-view" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.1rem; background: rgba(0, 242, 254, 0.08); border: 1px solid var(--border-glow); color: var(--accent); font-size: 0.85rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> Verify Certificate
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-card reveal-up">
+            <h2>Let's Build Campaign & Data Solutions Together</h2>
+            <p>I am actively exploring Certified Digital Marketing & Data Analyst roles in Bangalore. Whether you need automated reporting pipelines, campaign performance tracking, or executive BI dashboards, let's talk.</p>
+            <div class="contact-details">
+                <p><i class="fa-solid fa-envelope"></i> sathishp29001@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +91 7975944395</p>
+                <p><i class="fa-solid fa-location-dot"></i> Bangalore, Karnataka (Onsite)</p>
+            </div>
+            <div class="contact-actions">
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new" class="btn primary-btn"><i class="fa-solid fa-paper-plane"></i> Send Direct Email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sathish P. Engineered for Precision, Performance & Clarity.</p>
+    </footer>
+
+    <!-- JavaScript for Mobile Drawer, Typing Effect & Scroll Animations -->
+    <script>
+        // Mobile Drawer Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navIcon = document.getElementById('navIcon');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            navIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navIcon.className = 'fa-solid fa-bars';
+            });
+        });
+
+        // Scroll Observer for Heading, Skills, Projects, and Certificate Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.12
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-up').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Live Typing Effect for Hero Subheader
+        const words = ["Certified Digital Marketing & Data Analyst", "GA4 & Ads Campaign Optimizer", "Power BI Dashboard Developer", "SQL & Python Specialist"];
+        let i = 0;
+        let timer;
+
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typingText').innerHTML += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2000);
+                    return;
+                }
+                timer = setTimeout(loopTyping, 90);
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typingText').innerHTML = word.join("");
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    }
+                    setTimeout(typingEffect, 500);
+                    return;
+                }
+                timer = setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+
+        typingEffect();
+
+        // Mobile Zoom Freeze Handlers
+        document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
+        document.addEventListener('gesturechange', function (e) { e.preventDefault(); });
+        document.addEventListener('gestureend', function (e) { e.preventDefault(); });
+        document.addEventListener('touchstart', function (e) {
+            if (e.touches.length > 1) { e.preventDefault(); }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (e) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) { e.preventDefault(); }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+
+</body>
+</html>
